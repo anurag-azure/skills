@@ -63,4 +63,4 @@ The primary output is an **Architecture Decision Record (ADR) document** (e.g. `
 - the project ADR artifact (e.g. blueprint-adr.md) for the ADR structure + decision set, and the epic/requirement inputs for the decisions to record — TSA wins on any conflict
 - spring-boot-docs
 - openapi-3-spec
-- pair with java17-springboot3-best-practices, build-toolchain-alignment, and the matching db/security/messaging skills
+- pair with java17-springboot3-best-practicesv2, build-toolchain-alignmentv2, and the matching db/security/messaging skills

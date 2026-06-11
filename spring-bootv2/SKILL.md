@@ -6,7 +6,7 @@ created: "2026-06-09"
 updated: "2026-06-11"
 ---
 ## When to Use
-Use when tsa.technology.application.framework = Spring Boot. Activate during the implementation phase for a JVM service. Resolve the exact framework/language version from the TSA and defer language-level rules to the matching best-practices skill (e.g. java17-springboot3-best-practices for Java 17 / Spring Boot 3.x).
+Use when tsa.technology.application.framework = Spring Boot. Activate during the implementation phase for a JVM service. Resolve the exact framework/language version from the TSA and defer language-level rules to the matching best-practices skill (e.g. java17-springboot3-best-practicesv2 for Java 17 / Spring Boot 3.x).
 
 ## Procedure
 1. Resolve Spring Boot version + starters from the TSA artifacts.build_files (pom.xml/build.gradle).
@@ -45,4 +45,4 @@ Use when tsa.technology.application.framework = Spring Boot. Activate during the
 - spring-boot-docs
 - spring-framework-docs
 - tsa.technology.application / tsa.technology.observability
-- java17-springboot3-best-practices skill (language-level rules for the resolved version)
+- java17-springboot3-best-practicesv2 skill (language-level rules for the resolved version)

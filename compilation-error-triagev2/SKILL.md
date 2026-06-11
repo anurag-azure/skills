@@ -21,7 +21,7 @@ Use when encountering build failures, compilation errors, test failures, or runt
 ## Pitfalls
 - DO NOT fix errors in random order — dependencies first, then compile, then test, then runtime.
 - DO NOT assume all errors are code-related — many are pom.xml dependency/config issues; use `mvn dependency:tree`.
-- DO NOT bump Spring Boot / Java above the TSA-resolved version to satisfy a newer ambient runtime — align the toolchain instead (see `build-toolchain-alignment`).
+- DO NOT bump Spring Boot / Java above the TSA-resolved version to satisfy a newer ambient runtime — align the toolchain instead (see `build-toolchain-alignmentv2`).
 - DO NOT skip parent POM inheritance — extend `spring-boot-starter-parent` at the TSA version.
 - DO NOT use `javax.*` on Spring Boot 3 — use `jakarta.*` for servlet/persistence/validation.
 - DO NOT swap the logging backend the TSA names — for SLF4J + Logback keep Logback; do not introduce Log4j2 (or vice-versa) unless the TSA specifies it.
@@ -50,4 +50,4 @@ Use when encountering build failures, compilation errors, test failures, or runt
 - tsa.technology.application / tsa.technology.database / tsa.technology.observability / tsa.testing
 - spring-boot-docs
 - maven-docs
-- pair with java17-springboot3-best-practices, build-toolchain-alignment, spring-boot-3-test-stabilization
+- pair with java17-springboot3-best-practicesv2, build-toolchain-alignmentv2, spring-boot-3-test-stabilizationv2

@@ -36,7 +36,7 @@ Use when fixing or adding tests for a Spring Boot 3.x (e.g. 3.2.x) / Java 17 ser
 - Runner: JUnit 5 (`spring-boot-starter-test` brings Jupiter, Mockito, AssertJ)
 - HTTP: `MockMvc` (servlet) / `WebTestClient` (reactive)
 - Integration: Testcontainers module matching `tsa.technology.database.vendor`
-- Pair with `java17-springboot3-best-practices` and `build-toolchain-alignment`
+- Pair with `java17-springboot3-best-practicesv2` and `build-toolchain-alignmentv2`
 
 ## Validation Rules
 - All tests compile and run on a JDK whose major == `language_version` (17)

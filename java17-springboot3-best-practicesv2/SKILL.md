@@ -16,7 +16,7 @@ Use when `tsa.technology.application.language` = Java AND `language_version` res
 5. **Constructor injection with `private final` fields** (or Lombok `@RequiredArgsConstructor`). Never field injection (`@Autowired` on fields).
 6. **Use the `jakarta.*` namespace** (Spring Boot 3 baseline: Spring Framework 6.1, Jakarta EE 10) — never `javax.*` for servlet/persistence/validation imports.
 7. **Spring Boot 3.2 specifics:** virtual threads are opt-in via `spring.threads.virtual.enabled=true` (supported in 3.2+); use only 3.x APIs — avoid any API introduced in Spring Boot 4. Use `@RestControllerAdvice` for global error handling and `@ConfigurationProperties` for externalized config.
-8. **Validate the build runtime** matches Java 17 before compiling (see the `build-toolchain-alignment` skill) — a newer ambient JDK with an old compiler plugin causes `TypeTag :: UNKNOWN`.
+8. **Validate the build runtime** matches Java 17 before compiling (see the `build-toolchain-alignmentv2` skill) — a newer ambient JDK with an old compiler plugin causes `TypeTag :: UNKNOWN`.
 
 ## Patterns
 - Records for DTOs/value objects (Java 17)
@@ -41,7 +41,7 @@ Use when `tsa.technology.application.language` = Java AND `language_version` res
 - Build: Maven (`maven-compiler-plugin` with `<release>17</release>`) or Gradle toolchain pinned to 17
 - Boilerplate: Lombok per `tsa.technology.application.boilerplate_tool`
 - Web: `spring-boot-starter-web`; Validation: `spring-boot-starter-validation` (`jakarta.validation`)
-- Pair with `build-toolchain-alignment` (runtime) and `spring-boot-3-test-stabilization` (tests)
+- Pair with `build-toolchain-alignmentv2` (runtime) and `spring-boot-3-test-stabilizationv2` (tests)
 
 ## Validation Rules
 - Reject any source using Java 21+ syntax when `language_version`=17
