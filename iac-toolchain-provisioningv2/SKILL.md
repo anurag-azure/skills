@@ -40,39 +40,59 @@ The runtime hard-terminates the agent at ~100 `command_line` calls. Stay far bel
    the gate `review-only` (or `BLOCKED-ON-ENV`), name the exact missing tool, and fall back to the
    documented-API audit from `iac-deployability-verificationv2`.
 
-## Tool + Offline-Validation Matrix (resolve from cloud_provider × iac_format)
-- **Terraform / OpenTofu** (any cloud):
-  install: `apt-get install -y terraform` (HashiCorp apt repo) · `apk add terraform` · or download the
-  `terraform_<ver>_linux_<arch>.zip` from releases.hashicorp.com and unzip to PATH (`tofu` for OpenTofu).
-  validate (no login): `terraform fmt -check -recursive` ; `terraform init -backend=false` (downloads
-  providers from the registry — network, but NO cloud creds) ; `terraform validate`.
-  If `init` cannot reach the registry, run `terraform fmt -check` + `terraform validate -no-color` after a
-  best-effort `init -backend=false`, and mark provider-dependent checks review-only.
-- **Bicep** (Azure):
-  install: standalone `bicep` CLI binary (`az bicep install` if az present, else download `bicep-linux-x64`).
-  validate (no login): `bicep build <file>.bicep` (compiles to ARM JSON) ; `bicep lint <file>.bicep`.
-- **ARM templates** (Azure JSON):
-  install: arm-ttk (PowerShell) via `pwsh` + the arm-ttk module, or use `bicep decompile` to sanity-check.
-  validate (no login): arm-ttk `Test-AzTemplate` ; JSON schema check. (`az deployment validate` needs login → skip.)
-- **CloudFormation / SAM** (AWS):
-  install: `pip install cfn-lint` (and `aws-sam-cli` if SAM).
-  validate (no login): `cfn-lint <template>` ; for SAM `sam validate --lint`. (`aws cloudformation validate-template`
-  needs creds → skip.)
-- **OpenAPI / API specs** (any gateway contract):
-  install: `npm i -g @stoplight/spectral-cli` (or `npx`), or `pip install openapi-spec-validator`.
-  validate (no login): `spectral lint <spec>` ; `openapi-spec-validator <spec>`.
-- **Azure APIM policy XML**:
-  no public offline semantic validator → `xmllint --noout <file>` for well-formedness, then the documented-API
-  audit (APIM policy-expression surface) from `iac-deployability-verificationv2`. Mark semantic gate review-only.
-- **GCP API Gateway / Apigee**:
-  Terraform path → use the Terraform row. Raw OpenAPI api-config → spectral. Apigee proxy XML → `xmllint` +
-  apigeelint (`npm i -g apigeelint`; `apigeelint -s <proxydir>`).
-- **Kong**: `deck` CLI — `deck gateway validate` / `deck file lint` (offline).
-- **Kubernetes / Gateway-API / Helm**:
-  install: `helm`, `kubeconform`. validate (no cluster): `helm lint <chart>` ;
-  `kubectl apply --dry-run=client -f <manifest>` ; `kubeconform -strict <manifest>`.
-- **Pulumi**: offline limited — run the language compiler/type-check; `pulumi preview` needs a stack/login → skip,
-  mark review-only.
+## Coverage principle (ALL clouds × ALL formats)
+Cloud provider almost never changes WHICH validator you run — `iac_format` does. Azure, AWS, GCP, OCI, Alibaba,
+IBM, and on-prem all use the SAME tool for a given format (e.g. Terraform is identical across clouds; only the
+provider plugin differs, and `init -backend=false` fetches it without credentials). So: **resolve the validator
+from `iac_format` first**, run the FULL offline battery for it, and add any cloud-specific extra. Run EVERY
+applicable login-free check (syntax + lint + static security), not just one — capture each result.
+
+## Universal offline layer (run for EVERY format, in addition to the per-format battery)
+- **Static security / policy scan (no login):** `checkov -d .` (covers Terraform/CFN/Bicep/ARM/K8s/Helm/
+  Serverless/ARM) ; `trivy config .` (IaC misconfig + secrets) ; OPA policy: `conftest test <file>`.
+- **Secret scan (no login):** `gitleaks detect --no-git -s .` or `trivy fs --scanners secret .`.
+- These need NO cloud auth. Install via `pip install checkov`, the trivy apt/apk pkg or static binary,
+  `conftest`/`gitleaks` static binaries. If any can't install, mark that sub-gate review-only — keep the rest.
+
+## Per-format battery (resolve from iac_format; same across ALL clouds incl. OCI/Alibaba/IBM/on-prem)
+- **Terraform / OpenTofu** (Azure/AWS/GCP/OCI/any):
+  install: `apt-get install -y terraform` (HashiCorp repo) · `apk add terraform` · static zip from
+  releases.hashicorp.com (`tofu` for OpenTofu). Optional: `tflint`, `checkov`, `trivy`.
+  RUN (no login): `terraform fmt -check -recursive` ; `terraform init -backend=false` ; `terraform validate` ;
+  `tflint --recursive` ; `checkov -d .` ; `trivy config .`.
+  If the registry is unreachable, run `fmt -check` + best-effort `init -backend=false` + `validate -no-color`
+  and mark provider-dependent checks review-only.
+- **CDK** (AWS/Terraform-CDK, any language): `npm ci` / `pip install -r` then `cdk synth --no-lookups` (offline,
+  no creds) → produces CFN/TF → then run the CFN/Terraform battery on the synth output. (`cdk deploy` = login → skip.)
+- **Bicep** (Azure): install `bicep` (`az bicep install` or `bicep-linux-x64`/musl binary).
+  RUN: `bicep build <f>.bicep` ; `bicep lint <f>.bicep` ; `checkov -d .` ; `trivy config .`.
+- **ARM templates** (Azure JSON): arm-ttk via `pwsh` (`Test-AzTemplate`) ; JSON schema check ; `cfn-lint` does
+  not apply ; `checkov -d .` (supports ARM). (`az deployment ... validate` = login → skip.)
+- **CloudFormation / SAM** (AWS): install `pip install cfn-lint`, `aws-sam-cli`.
+  RUN: `cfn-lint <t>` ; SAM `sam validate --lint` ; `checkov -d .` ; `trivy config .`.
+  (`aws cloudformation validate-template` = creds → skip.)
+- **Google Cloud Deployment Manager / config-connector**: prefer the Terraform path; raw YAML → schema lint +
+  `checkov`/`conftest`. (`gcloud deployment-manager` = login → skip.)
+- **Pulumi** (any cloud, any language): `npm ci`/`pip install`/`go build` to TYPE-CHECK the program offline ;
+  `checkov -d .` on any emitted IaC. (`pulumi preview`/`up` need a stack/login → skip, mark review-only.)
+- **Ansible** (provisioning): `ansible-lint` ; `ansible-playbook --syntax-check` ; `yamllint`. (No `-i` against
+  real hosts; no connection.)
+- **OpenAPI / Swagger / API spec** (any gateway contract): install `npm i -g @stoplight/spectral-cli` or
+  `pip install openapi-spec-validator`. RUN: `spectral lint <spec>` ; `openapi-spec-validator <spec>` ;
+  `redocly lint <spec>` (if available).
+- **Azure APIM policy XML**: `xmllint --noout <f>` (well-formed) + the APIM policy-expression documented-API
+  audit from `iac-deployability-verificationv2`. No public offline semantic validator → mark semantic review-only.
+- **AWS API Gateway** (REST/HTTP, OpenAPI + `x-amazon-apigateway-*`): `spectral lint` the OpenAPI ; if defined in
+  CFN/SAM/Terraform, run that format's battery.
+- **GCP API Gateway**: api-config is OpenAPI → `spectral lint` ; if via Terraform, the Terraform battery.
+- **Apigee** (proxy bundle XML): `xmllint --noout` ; `apigeelint -s <proxydir>` (`npm i -g apigeelint`).
+- **Kong**: `deck file lint` / `deck gateway validate` (offline) ; declarative YAML schema check.
+- **Kubernetes / Gateway-API / Ingress / Helm / Kustomize**: install `helm`, `kubeconform`.
+  RUN (no cluster): `helm lint <chart>` ; `helm template <chart> | kubeconform -strict -summary` ;
+  `kustomize build <dir> | kubeconform -strict` ; `kubectl apply --dry-run=client -f <manifest>` ;
+  `kubeconform -strict <manifest>` ; `checkov -d .` ; `conftest test`.
+- **OCI Resource Manager** = Terraform with the `oci` provider → Terraform battery (no OCI login needed for
+  fmt/init -backend=false/validate). **Alibaba/IBM/DigitalOcean/etc.** = same Terraform battery, different provider.
 
 ## Patterns
 - Probe → detect OS/pkg-mgr → install → verify `--version` → run validator → capture output.
@@ -91,7 +111,8 @@ The runtime hard-terminates the agent at ~100 `command_line` calls. Stay far bel
 - TOOL-RESOLVED: the validator matching cloud_provider × iac_format is identified.
 - INSTALLED-OR-BLOCKED: tool installed and `--version` verified, OR network-locked → review-only/BLOCKED-ON-ENV.
 - LOGIN-FREE: no auth/login/credentials; no plan/apply/deploy; no remote backend.
-- RAN-AND-CAPTURED: each applicable validator executed once; exit code + output captured.
+- RAN-AND-CAPTURED: the FULL applicable offline battery executed once each (format-native syntax + lint +
+  static security/secret scan + universal layer) — not just one check; exit code + output captured for each.
 - HONEST-COVERAGE: each gate marked tool-verified vs review-only — never a false pass.
 
 ## RAG Sources
