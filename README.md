@@ -34,3 +34,6 @@ TSA (e.g. `messaging.broker = Kafka` → kafkav2 skill).
 
 ### API gateway agent
 - `api-gateway-config-guardianv2` — cloud-agnostic API gateway config validation & remediation (Azure APIM, AWS API Gateway, GCP API Gateway/Apigee, OCI; Terraform/Bicep/CFN/ARM/OpenAPI)
+
+### Deployability / verification (cross-cutting)
+- `iac-deployability-verificationv2` — final deployability gate for any IaC: API authenticity (no hallucinated APIs), self-containment (declare every variable), topology correctness, native-tool verification

@@ -58,5 +58,22 @@ Cloud-agnostic gates (map provider primitives onto each):
 - **IAC-1** No literal secrets; idempotent; provider-version pinned; formats/validates clean.
 FAIL the configuration if any required gate FAILs; PARTIAL where present-but-incomplete.
 
+## Deployability Gate (delegate to iac-deployability-verificationv2)
+A fixed config is worthless if it cannot deploy. Before emitting, run the deployability gate:
+**API authenticity** (no invented functions/methods/attributes/resource args), **self-containment** (declare
+every variable/param/secret you reference; emit a companion vars file), **topology correctness**, and
+**native-tool verification** — never report PASS on well-formedness alone. See `iac-deployability-verificationv2`.
+
+### API-authenticity examples (per provider — the embedded-expression runtime has its OWN narrow surface)
+- **Azure APIM policy C#**: request/response `Headers` is `IReadOnlyDictionary<string,string[]>` — read via the
+  indexer, `TryGetValue`, or `GetValueOrDefault`. There is **no `GetValues()`** (that's `System.Net.Http`). Client
+  IP behind Front Door comes from `X-Forwarded-For`, not `context.Request.IpAddress`.
+- **AWS API Gateway (VTL / mapping templates)**: only `$context`, `$input`, `$util` members that are documented;
+  client IP behind CloudFront is `$context.identity.sourceIp` resolved from forwarded headers.
+- **GCP Apigee**: Message Templates / flow variables (`request.header.*`, `client.ip`) — `client.ip` is the LB
+  hop unless `X-Forwarded-For` is used.
+- **CloudFormation/Terraform**: only documented resource types and arguments; pin provider versions.
+Rule: if you cannot confirm an identifier exists in the target runtime's documented surface, do NOT use it.
+
 ## RAG Sources
-When `use_rag` is enabled, call `get_rag_context` (scoped by `get_account_project_access_details`) for: the requirement/spec the gateway must satisfy, prior production incidents (e.g. auth/token regressions), and provider-specific policy references. Prefer retrieved spec/incident evidence over assumptions; cite what was retrieved in the findings.
+When `use_rag` is enabled, call `get_rag_context` (scoped by `get_account_project_access_details`) for: the requirement/spec the gateway must satisfy, prior production incidents (e.g. auth/token regressions), provider-specific policy references, and confirmation of any uncertain provider API/attribute. Prefer retrieved spec/incident evidence over assumptions; cite what was retrieved in the findings.
