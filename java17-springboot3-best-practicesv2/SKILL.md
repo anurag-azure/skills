@@ -2,8 +2,8 @@
 name: "java17-springboot3-best-practicesv2"
 description: "Java 17 LTS and Spring Boot 3.2.x coding guidelines for microservices: language-feature ceiling, jakarta namespace, constructor injection, records, sealed types — without Java 21-only or Spring Boot 4-only constructs."
 version: 1
-created: "2026-06-10T13:17:13+05:30"
-updated: "2026-06-12T01:32:53+05:30"
+created: "2026-06-10T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when `tsa.technology.application.language` = Java AND `language_version` resolves to 17 (and/or `framework` = Spring Boot with `framework_version` in the 3.x line, e.g. 3.2.x). Apply when writing, reviewing, or fixing JVM code for such a target. **Version guard (read first):** resolve the exact language and framework versions from the TSA — `tsa.technology.application.{language_version, framework_version}` — and NEVER use a language or framework feature newer than that version, even if the runtime offers it. If the TSA targets a different Java/Spring Boot version, defer to the matching skill instead of this one.

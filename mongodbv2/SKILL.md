@@ -2,8 +2,8 @@
 name: "mongodbv2"
 description: "MongoDB document modeling: embedding vs referencing, indexing, schema validation, aggregation pipelines, and transaction boundaries."
 version: 1
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:10:56+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when tsa.technology.database.type resolves to MongoDB/DocumentDB. Activate for document persistence.

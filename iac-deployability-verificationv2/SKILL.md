@@ -2,8 +2,8 @@
 name: "iac-deployability-verificationv2"
 description: "Make generated Infrastructure-as-Code READY TO DEPLOY, for any cloud/provider/format. Enforces API authenticity (no hallucinated functions/methods/attributes/resource arguments), self-containment (every referenced variable/secret/dependency declared), deployment-topology correctness, and native-tool verification — so 'syntactically valid' is never mistaken for 'deployable'. Use as the final gate on any IaC the workflow emits."
 version: 1
-created: "2026-06-25T01:18:35+05:30"
-updated: "2026-06-25T02:41:12+05:30"
+created: "2026-06-25T03:34:24+05:30"
+updated: "2026-06-25T03:34:24+05:30"
 ---
 ## When to Use
 Use as the FINAL gate before emitting any IaC artifact (Terraform, Bicep, ARM, CloudFormation/SAM, Pulumi,

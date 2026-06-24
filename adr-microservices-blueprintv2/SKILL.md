@@ -2,8 +2,8 @@
 name: "adr-microservices-blueprintv2"
 description: "Architecture Decision Record blueprint for microservices modernization. Resolves the target stack, cloud, datastore, migration tool, logging, and test conventions dynamically from the TSA (e.g. Java 17 / Spring Boot 3.2.x / Maven / DB2 / Flyway / Redis / OAuth2-JWT). Optional patterns (multi-tenancy, BFF, messaging) apply ONLY where the TSA declares them."
 version: 3
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:32:53+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when creating or documenting architecture decisions for microservices modernization projects migrating a legacy application to a cloud-native service. Apply when setting up a new service, defining API standards, implementing observability, or establishing distributed-system patterns. **Resolve every concrete technology, version, cloud, and tool from the TSA — never hardcode a stack.** This skill is the blueprint; the TSA is the source of truth.

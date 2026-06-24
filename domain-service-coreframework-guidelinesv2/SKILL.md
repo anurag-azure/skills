@@ -2,8 +2,8 @@
 name: "domain-service-coreframework-guidelinesv2"
 description: "Domain service implementation guidelines based on orbt-coreframework-lib-src modules. Defines what Domain services MUST and MUST NEVER implement given cross-cutting concerns handled by core-framework-common and core-framework-data"
 version: 2
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:10:56+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when developing Domain services that handle core business logic, persistence, and data access. Apply when implementing JPA repositories, caching strategies, or transaction management in the Domain layer. Essential for ensuring Domain services properly leverage CoreFramework modules without duplicating framework-provided functionality.

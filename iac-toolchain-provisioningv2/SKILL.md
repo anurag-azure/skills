@@ -2,8 +2,8 @@
 name: "iac-toolchain-provisioningv2"
 description: "Technology-agnostic rule for provisioning the IaC validation CLI on demand (not installed by default) and running BASIC OFFLINE validation in the terminal WITHOUT any cloud login — resolved from cloud_provider + iac_format. Detects the OS/package manager, installs the right tool (terraform, bicep, cfn-lint, spectral, deck, helm/kubeconform...), then runs login-free checks (e.g. terraform fmt -check; terraform init -backend=false; terraform validate)."
 version: 1
-created: "2026-06-25T02:41:12+05:30"
-updated: "2026-06-25T02:50:41+05:30"
+created: "2026-06-25T03:34:24+05:30"
+updated: "2026-06-25T03:34:24+05:30"
 ---
 ## When to Use
 Use before reporting an IaC artifact deployable, in ANY cloud and ANY format. The validation CLI is usually NOT

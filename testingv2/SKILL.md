@@ -2,8 +2,8 @@
 name: "testingv2"
 description: "Application test strategy: unit, slice, and integration testing; coverage targets; test data; mocking discipline. Framework resolved from the TSA."
 version: 1
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:10:56+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use during the tests phase or whenever code is added that needs coverage. Activate for any service with business logic. Resolve the test framework from tsa.testing / tsa.technology.

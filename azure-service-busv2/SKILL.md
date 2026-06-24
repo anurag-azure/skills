@@ -2,8 +2,8 @@
 name: "azure-service-busv2"
 description: "Azure Service Bus messaging: queues vs topics/subscriptions, sessions for ordering, dead-lettering, duplicate detection, and peek-lock processing."
 version: 1
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:10:56+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when tsa.technology.messaging.broker = Azure Service Bus. Activate for enterprise messaging on Azure.

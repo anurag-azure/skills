@@ -2,8 +2,8 @@
 name: "spring-boot-3-test-stabilizationv2"
 description: "Stabilize and repair tests for Spring Boot 3.2.x / Java 17 services: JUnit 5, @SpringBootTest slices, MockMvc, Mockito, Testcontainers — without Spring Boot 4-only or Java 21-only test constructs."
 version: 1
-created: "2026-06-10T13:17:13+05:30"
-updated: "2026-06-12T01:32:53+05:30"
+created: "2026-06-10T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when fixing or adding tests for a Spring Boot 3.x (e.g. 3.2.x) / Java 17 service — i.e. when `tsa.technology.application.framework_version` is in the 3.x line. **Version guard:** keep all test code within Java 17 and Spring Boot 3.x APIs; never introduce JUnit/Spring test APIs that only exist in Spring Boot 4. Defer to the matching skill if the TSA targets a different version.

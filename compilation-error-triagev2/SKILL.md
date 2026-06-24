@@ -2,8 +2,8 @@
 name: "compilation-error-triagev2"
 description: "Systematic error classification and resolution order for Java/Spring Boot compilation, test, and runtime errors in microservices migration projects. Versions, datastore, migration tool, and logging backend are resolved from the TSA (e.g. Java 17 / Spring Boot 3.2.x / Maven / DB2 / Flyway / Logback)."
 version: 2
-created: "2026-06-09T23:28:12+05:30"
-updated: "2026-06-12T01:32:53+05:30"
+created: "2026-06-09T03:34:24+05:30"
+updated: "2026-06-12T03:34:24+05:30"
 ---
 ## When to Use
 Use when encountering build failures, compilation errors, test failures, or runtime errors during microservices development or migration. Apply when facing multiple error types simultaneously and need a prioritized resolution order. **Resolve the target Java/Spring Boot versions, datastore, migration tool, and logging backend from the TSA** (`tsa.technology.application.{language_version, framework_version, build_tool}`, `tsa.technology.database.{vendor, migration_tool}`, `tsa.technology.observability.logging`) — never assume a version. Essential for Maven/JPA/framework integration issues on the TSA-pinned stack (e.g. Spring Boot 3.2.x / Java 17).
