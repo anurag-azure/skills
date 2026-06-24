@@ -31,9 +31,11 @@ it. Never report PASS/DEPLOYABLE on syntax alone.
 4. **Topology correctness** — apply the deployment topology (fronting CDN/WAF/LB/API-front such as Azure Front
    Door, CloudFront, Cloud Armor, ALB). Behind a fronting layer, client identity/IP/host/scheme come from
    FORWARDED headers, not the socket/peer. Cross-origin + credentials ⇒ third-party-cookie rules apply.
-5. **Native verification** — run the provider's own validator via command_line when available; capture output.
-   If the toolchain is absent, fall back to the documented-API audit and explicitly mark each gate as
-   `tool-verified` or `review-only`.
+5. **Native verification** — the validation CLI is usually NOT pre-installed: PROVISION it on demand and run
+   basic OFFLINE, login-free checks per `iac-toolchain-provisioningv2` (e.g. terraform fmt -check; terraform
+   init -backend=false; terraform validate; bicep build; cfn-lint; spectral lint). Capture exit code + output.
+   If the toolchain genuinely cannot be installed (no network/locked registry), fall back to the documented-API
+   audit and explicitly mark each gate `tool-verified` or `review-only` — never a false pass.
 6. **Pin & idempotency** — provider/runtime versions pinned; re-applying is a no-op; deterministic ordering.
 7. **Verdict** — emit DEPLOYABLE only if API-authenticity + self-containment + topology + (native or audited)
    verification all pass; else NOT_DEPLOYABLE with the exact unresolved items.

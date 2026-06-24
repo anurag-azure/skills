@@ -37,3 +37,4 @@ TSA (e.g. `messaging.broker = Kafka` → kafkav2 skill).
 
 ### Deployability / verification (cross-cutting)
 - `iac-deployability-verificationv2` — final deployability gate for any IaC: API authenticity (no hallucinated APIs), self-containment (declare every variable), topology correctness, native-tool verification
+- `iac-toolchain-provisioningv2` — install the IaC validation CLI on demand (per cloud_provider × iac_format) and run basic offline, login-free validation (terraform fmt -check / validate, bicep build, cfn-lint, spectral…)
