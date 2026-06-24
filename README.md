@@ -31,3 +31,6 @@ TSA (e.g. `messaging.broker = Kafka` → kafkav2 skill).
 
 ### Security agent
 - `oauth2v2` · `jwtv2` · `oidcv2` · `zero-trustv2` · `secrets-managementv2`
+
+### API gateway agent
+- `api-gateway-config-guardianv2` — cloud-agnostic API gateway config validation & remediation (Azure APIM, AWS API Gateway, GCP API Gateway/Apigee, OCI; Terraform/Bicep/CFN/ARM/OpenAPI)
