@@ -2,8 +2,8 @@
 name: "zero-trustv2"
 description: "Zero Trust security posture: never trust/always verify, least privilege, strong identity, mTLS, network segmentation, and continuous verification."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when the architecture requires defense-in-depth beyond perimeter security. Activate for cross-service and gateway security design.

@@ -2,8 +2,8 @@
 name: "outbox-patternv2"
 description: "Transactional Outbox pattern to guarantee reliable event publishing without dual writes between a database and a message broker."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use whenever a state change must be persisted AND an event published atomically. Activate for any messaging broker when the service owns persistence.

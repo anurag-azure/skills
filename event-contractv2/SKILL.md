@@ -2,8 +2,8 @@
 name: "event-contractv2"
 description: "Event/message contract design: schema definition, versioning, compatibility rules, and a shared event catalogue across producers and consumers."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use whenever services exchange events/messages. Activate alongside any messaging skill (Kafka/SQS/Service Bus) to define the payloads.

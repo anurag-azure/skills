@@ -2,8 +2,8 @@
 name: "microservice-iteration-handoffv2"
 description: "Git workflow, code quality checklist, and handoff documentation process for iterative microservices development. Ensures stable, reviewable code sharing between development iterations with proper branch strategy and commit standards."
 version: 2
-created: "2026-06-09"
-updated: "2026-06-11"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when completing a development iteration and preparing code for handoff to another team or iteration. Apply before pushing code to remote repository, before creating pull requests, or when establishing team Git workflow standards. Essential for ensuring code is compilation-ready, tested, documented, and follows team conventions. **Resolve the coverage target, migration tool, and secrets vault from the TSA** (`tsa.testing.unit_tests.coverage_target`, `tsa.technology.database.migration_tool`, `tsa.compliance_and_security.security_controls.secrets_management` / `tsa.deployment.configuration_management`) — do not hardcode them.

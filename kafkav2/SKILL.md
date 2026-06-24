@@ -2,8 +2,8 @@
 name: "kafkav2"
 description: "Apache Kafka producer/consumer design: topics, partitions, consumer groups, delivery semantics, DLQ, and transactional outbox integration."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tsa.technology.messaging.broker = Kafka. Activate for event streaming / high-throughput async messaging.

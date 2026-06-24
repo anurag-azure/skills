@@ -2,8 +2,8 @@
 name: "spring-bootv2"
 description: "Spring Boot 3.x implementation idioms: dependency injection, configuration, web/data starters, actuator, virtual threads, production-ready patterns. Version resolved from the TSA (e.g. Spring Boot 3.2.x / Java 17)."
 version: 2
-created: "2026-06-09"
-updated: "2026-06-11"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:32:53+05:30"
 ---
 ## When to Use
 Use when tsa.technology.application.framework = Spring Boot. Activate during the implementation phase for a JVM service. Resolve the exact framework/language version from the TSA and defer language-level rules to the matching best-practices skill (e.g. java17-springboot3-best-practicesv2 for Java 17 / Spring Boot 3.x).

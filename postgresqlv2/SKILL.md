@@ -2,8 +2,8 @@
 name: "postgresqlv2"
 description: "PostgreSQL design and usage: schema design, indexing, constraints, transactions/isolation, JSONB, and connection pooling."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tsa.technology.database.type/vendor resolves to PostgreSQL. Activate for relational persistence on Postgres.

@@ -2,8 +2,8 @@
 name: "jpav2"
 description: "JPA/Hibernate persistence: entity mapping, fetch strategy, transactions, repositories, and avoiding N+1 and proxy pitfalls."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tsa.technology.database.access = JPA/Hibernate (typically with Spring Data JPA). Activate for ORM-based relational persistence.

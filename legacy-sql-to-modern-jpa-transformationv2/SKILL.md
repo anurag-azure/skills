@@ -2,8 +2,8 @@
 name: "legacy-sql-to-modern-jpa-transformationv2"
 description: "Transform legacy SQL (stored procedures, views, dynamic SQL, native queries) to modern Spring Data JPA/JPQL with proper schema mapping, parameterization, and type safety. Target datastore, dialect, and migration tool are resolved from the TSA (e.g. DB2 via JPA/Hibernate + Flyway). Use with Database Implementation agents."
 version: 2
-created: "2026-06-09"
-updated: "2026-06-11"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:32:53+05:30"
 ---
 ## When to Use
 Use this skill when:

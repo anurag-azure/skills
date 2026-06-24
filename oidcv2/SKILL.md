@@ -2,8 +2,8 @@
 name: "oidcv2"
 description: "OpenID Connect authentication on top of OAuth2: ID tokens, userinfo, discovery, and login/logout flows."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when authentication (identity) is required via an OIDC provider (Cognito/Keycloak/Azure AD). Activate with oauth2 for login flows.

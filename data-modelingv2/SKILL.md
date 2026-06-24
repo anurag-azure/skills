@@ -2,8 +2,8 @@
 name: "data-modelingv2"
 description: "Logical/physical data modeling: normalization, keys, relationships, naming, and translating a legacy schema to the target model."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when designing the persistence model or migrating a legacy schema. Activate in the design/infrastructure phase regardless of DB engine.

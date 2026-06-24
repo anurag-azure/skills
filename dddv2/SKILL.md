@@ -2,8 +2,8 @@
 name: "dddv2"
 description: "Domain-Driven Design tactical and strategic patterns: bounded contexts, aggregates, entities, value objects, domain events, ubiquitous language."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when modeling business logic for a DOMAIN service. Activate when the TSA service.type=DOMAIN, or the spec enumerates aggregates, invariants, or a ubiquitous language. Resolve the actual language/framework from the TSA - DDD patterns are stack-independent.

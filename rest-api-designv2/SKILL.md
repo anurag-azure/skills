@@ -2,8 +2,8 @@
 name: "rest-api-designv2"
 description: "REST/HTTP API design: resource modeling, URI and versioning conventions, status-code and error-contract standards, OpenAPI documentation."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tsa.technology.api.style = REST. Activate when generating controllers/routers or an OpenAPI contract. Resolve framework specifics from the TSA (Spring MVC, Express, FastAPI, ...).

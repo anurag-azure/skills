@@ -2,8 +2,8 @@
 name: "event-modelingv2"
 description: "Event modeling for event-driven systems: commands, events, read models, event storming outputs, and event-flow design across services."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when the design involves asynchronous flows, domain events, or event-driven integration. Activate when tsa.technology.messaging.enabled = true or the spec describes event flows.

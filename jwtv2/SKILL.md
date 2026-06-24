@@ -2,8 +2,8 @@
 name: "jwtv2"
 description: "JWT handling: claims design, signature algorithms, validation, expiry/rotation, and safe storage/transport of tokens."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:28:12+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tokens are JWTs (stateless auth). Activate alongside oauth2/oidc whenever JWTs are issued or validated.

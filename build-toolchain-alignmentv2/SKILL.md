@@ -2,8 +2,8 @@
 name: "build-toolchain-alignmentv2"
 description: "Technology-agnostic rule for aligning the build/runtime toolchain to the TSA-specified version before building: provision/select the matching JDK/Node/Python/Go/.NET, pin the compiler release, and treat version-matching as required (not a forbidden downgrade)."
 version: 1
-created: "2026-06-10"
-updated: "2026-06-10"
+created: "2026-06-10T13:17:13+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use before compiling, packaging, or running any generated project, in ANY language. Apply whenever a build fails with a toolchain/version error, or whenever the ambient runtime might differ from `tsa.technology.application.language_version`. This skill is stack-independent: resolve the language and version from the TSA, then make the build toolchain match it.

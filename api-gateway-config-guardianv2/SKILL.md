@@ -3,7 +3,7 @@ name: "api-gateway-config-guardianv2"
 description: "Cloud-agnostic API gateway configuration validation and remediation (Azure APIM, AWS API Gateway, GCP API Gateway/Apigee, OCI API Gateway) expressed as IaC (Terraform, Bicep, CloudFormation, ARM, OpenAPI). Detects implementation gaps and missing functionality — auth/token propagation, cookie rewrite after refresh, CORS, routing, rate limiting, observability — and fixes them in place."
 version: 1
 created: "2026-06-24T21:49:08+05:30"
-updated: "2026-06-25T03:18:58+05:30"
+updated: "2026-06-25T01:18:35+05:30"
 ---
 ## When to Use
 Use whenever the artifact under review is an **API gateway configuration** — independent of cloud or IaC language. Resolve the provider and format from the input/TSA, never hard-code:

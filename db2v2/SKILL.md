@@ -2,8 +2,8 @@
 name: "db2v2"
 description: "IBM Db2 (LUW/z) database usage: SQL dialect, data types, identity/sequences, FETCH FIRST pagination, isolation/locking, db2jcc driver config, and Db2-correct DDL for Flyway migrations."
 version: 1
-created: "2026-06-09"
-updated: "2026-06-09"
+created: "2026-06-09T23:45:02+05:30"
+updated: "2026-06-12T01:10:56+05:30"
 ---
 ## When to Use
 Use when tsa.technology.database.vendor = DB2 (or the legacy schema is Db2, e.g. OCP_* tables). Activate for relational persistence whose target engine is IBM Db2, especially when migrating legacy Db2 SQL/DDL and preserving an existing Db2 schema unchanged. Resolve language/framework from the TSA; this skill governs Db2-specific SQL/DDL/driver concerns that JPA does NOT abstract.
