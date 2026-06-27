@@ -21,3 +21,12 @@ updated: "2026-06-27"
 ## Coverage
 - Component tests for key screens; integration tests for each `requirement.json` test scenario (CRUD): create/read/update/delete flows hitting the mocked backend.
 - Gate: `tsc --noEmit` + ESLint clean + tests green before declaring build success.
+
+## ESM / dynamic imports (common HARD failure — fixes `--experimental-vm-modules` error)
+- **Never use `await import('...')` (dynamic import) in a test.** Jest throws `TypeError: A dynamic import callback was invoked without --experimental-vm-modules` because the default Jest VM has no ESM dynamic-import support. This is a frequent cause of an otherwise-finished app failing the test gate.
+  - WRONG: `const api = await import('../services/api');`
+  - RIGHT: `import * as api from '../services/api';` (or `import { createApi } from '../services/api';`) at the TOP of the test file.
+- To reset module state between tests use `jest.resetModules()` + `require('../services/api')` (CommonJS `require` needs no ESM flag) — not `await import`.
+- When a test asserts the api service's base-url / Authorization interceptor wiring, import the service statically and spy on / inject the axios instance; do NOT lazy-load it.
+- Only if dynamic ESM import is genuinely unavoidable: set the `test` script to `node --experimental-vm-modules node_modules/.bin/jest` and add `"extensionsToTreatAsEsm": [".ts",".tsx"]` + an ESM `transform` in `jest.config.js`. Prefer the static-import fix over reconfiguring the runner.
+- Test files belong in `src/__tests__/`, `src/screens/__tests__/`, `src/components/__tests__/` (per phase_folder_map) — write them directly at those paths; never create them at the project root and `mv` into `src/`.

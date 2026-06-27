@@ -14,3 +14,6 @@ updated: "2026-06-27"
 - Router: use `MemoryRouter`/`createMemoryRouter` with the route under test; assert navigation.
 - Coverage: per-route component tests + integration tests for each requirement.json scenario.
 - Gate: `tsc --noEmit` + ESLint + tests + `vite build` before success.
+
+## ESM / dynamic imports (common HARD failure)
+- Never use `await import('...')` in a Jest test — it throws `A dynamic import callback was invoked without --experimental-vm-modules`. Use a static top-of-file import; to reset modules use `jest.resetModules()` + `require()`. Vitest supports dynamic import natively, but prefer static imports regardless. If dynamic ESM under Jest is unavoidable: run `node --experimental-vm-modules node_modules/.bin/jest` + set `extensionsToTreatAsEsm`.
