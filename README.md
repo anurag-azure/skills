@@ -38,3 +38,12 @@ TSA (e.g. `messaging.broker = Kafka` → kafkav2 skill).
 ### Deployability / verification (cross-cutting)
 - `iac-deployability-verificationv2` — final deployability gate for any IaC: API authenticity (no hallucinated APIs), self-containment (declare every variable), topology correctness, native-tool verification
 - `iac-toolchain-provisioningv2` — install the IaC validation CLI on demand (per cloud_provider × iac_format) and run basic offline, login-free validation (terraform fmt -check / validate, bicep build, cfn-lint, spectral…)
+
+### React Native / Expo (mobile)
+- `react-native-best-practices` — Expo Router layout, React Query, theme tokens, performance (v2)
+- `react-native-component-scaffold` — Figma → Expo routes, epic batching, storyRegistry (v2)
+- `react-native-navigation-state-guidelines` — Expo Router, modals, deep links (v2)
+- `react-native-expo-runtime` — Metro, expo doctor, FlatList, keyboard (Jeffallan merge)
+- `react-native-ux-a11y` — Figma-safe accessibility and touch targets
+- `react-native-test-stabilization` — jest-expo, expo-router mocks (v2)
+- `sast-react-native` · `npm-build-error-triage` — security scan and build triage
